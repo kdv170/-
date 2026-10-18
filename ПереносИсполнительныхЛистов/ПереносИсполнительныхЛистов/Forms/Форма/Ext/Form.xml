@@ -1,0 +1,234 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.10">
+	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1"/>
+	<Events>
+		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
+	</Events>
+	<ChildItems>
+		<LabelDecoration name="ИнформацияОБазе" id="38"/>
+		<Pages name="Страницы" id="1">
+			<ChildItems>
+				<Page name="СтраницаВыгрузка" id="2">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>1. Выгрузка из ЗУП</v8:content>
+						</v8:item>
+					</Title>
+					<ChildItems>
+						<LabelDecoration name="ПодсказкаВыгрузка" id="3"/>
+						<UsualGroup name="ГруппаОтборВыгрузка" id="4">
+							<Group>AlwaysHorizontal</Group>
+							<ChildItems>
+								<InputField name="ДатаПереноса" id="5">
+									<DataPath>Объект.ДатаПереноса</DataPath>
+								</InputField>
+								<InputField name="Организация" id="6">
+									<DataPath>Объект.Организация</DataPath>
+								</InputField>
+							</ChildItems>
+						</UsualGroup>
+						<UsualGroup name="ГруппаКомандыВыгрузка" id="7">
+							<Group>AlwaysHorizontal</Group>
+							<ChildItems>
+								<Button name="ЗаполнитьДокументы" id="8">
+									<Type>UsualButton</Type>
+									<CommandName>Form.Command.ЗаполнитьДокументы</CommandName>
+								</Button>
+								<Button name="ОтметитьВсе" id="9">
+									<Type>UsualButton</Type>
+									<CommandName>Form.Command.ОтметитьВсе</CommandName>
+								</Button>
+								<Button name="СнятьОтметки" id="10">
+									<Type>UsualButton</Type>
+									<CommandName>Form.Command.СнятьОтметки</CommandName>
+								</Button>
+								<Button name="ВыгрузитьВФайл" id="11">
+									<Type>UsualButton</Type>
+									<CommandName>Form.Command.ВыгрузитьВФайл</CommandName>
+								</Button>
+							</ChildItems>
+						</UsualGroup>
+						<Table name="СписокДокументов" id="12">
+							<DataPath>Объект.СписокДокументов</DataPath>
+							<ChildItems>
+								<CheckBoxField name="СписокДокументовВыбран" id="13">
+									<DataPath>Объект.СписокДокументов.Выбран</DataPath>
+								</CheckBoxField>
+								<InputField name="СписокДокументовДокумент" id="14">
+									<DataPath>Объект.СписокДокументов.Документ</DataPath>
+								</InputField>
+								<InputField name="СписокДокументовОрганизация" id="15">
+									<DataPath>Объект.СписокДокументов.Организация</DataPath>
+								</InputField>
+								<InputField name="СписокДокументовСотрудник" id="16">
+									<DataPath>Объект.СписокДокументов.Сотрудник</DataPath>
+								</InputField>
+								<InputField name="СписокДокументовПолучатель" id="17">
+									<DataPath>Объект.СписокДокументов.Получатель</DataPath>
+								</InputField>
+								<InputField name="СписокДокументовДатаНачала" id="18">
+									<DataPath>Объект.СписокДокументов.ДатаНачала</DataPath>
+								</InputField>
+								<InputField name="СписокДокументовДатаОкончания" id="19">
+									<DataPath>Объект.СписокДокументов.ДатаОкончания</DataPath>
+								</InputField>
+								<InputField name="СписокДокументовСпособРасчета" id="20">
+									<DataPath>Объект.СписокДокументов.СпособРасчета</DataPath>
+								</InputField>
+							</ChildItems>
+						</Table>
+					</ChildItems>
+				</Page>
+				<Page name="СтраницаЗагрузка" id="21">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>2. Загрузка в ERP</v8:content>
+						</v8:item>
+					</Title>
+					<ChildItems>
+						<LabelDecoration name="ПодсказкаЗагрузка" id="22"/>
+						<UsualGroup name="ГруппаНастройкиЗагрузки" id="23">
+							<ChildItems>
+								<CheckBoxField name="ПроводитьДокументы" id="24">
+									<DataPath>Объект.ПроводитьДокументы</DataPath>
+								</CheckBoxField>
+								<CheckBoxField name="ОбновлятьСуществующие" id="25">
+									<DataPath>Объект.ОбновлятьСуществующие</DataPath>
+								</CheckBoxField>
+								<CheckBoxField name="ПереноситьНомера" id="26">
+									<DataPath>Объект.ПереноситьНомера</DataPath>
+								</CheckBoxField>
+								<CheckBoxField name="СохранятьДатыДокументов" id="27">
+									<DataPath>Объект.СохранятьДатыДокументов</DataPath>
+								</CheckBoxField>
+								<CheckBoxField name="СоздаватьПолучателей" id="28">
+									<DataPath>Объект.СоздаватьПолучателей</DataPath>
+								</CheckBoxField>
+							</ChildItems>
+						</UsualGroup>
+						<UsualGroup name="ГруппаКомандыЗагрузка" id="29">
+							<Group>AlwaysHorizontal</Group>
+							<ChildItems>
+								<Button name="ЗагрузитьИзФайла" id="30">
+									<Type>UsualButton</Type>
+									<CommandName>Form.Command.ЗагрузитьИзФайла</CommandName>
+								</Button>
+							</ChildItems>
+						</UsualGroup>
+						<Table name="РезультатЗагрузки" id="31">
+							<DataPath>Объект.РезультатЗагрузки</DataPath>
+							<ChildItems>
+								<InputField name="РезультатЗагрузкиНомерИсточника" id="32">
+									<DataPath>Объект.РезультатЗагрузки.НомерИсточника</DataPath>
+								</InputField>
+								<InputField name="РезультатЗагрузкиДатаИсточника" id="33">
+									<DataPath>Объект.РезультатЗагрузки.ДатаИсточника</DataPath>
+								</InputField>
+								<InputField name="РезультатЗагрузкиПредставление" id="34">
+									<DataPath>Объект.РезультатЗагрузки.Представление</DataPath>
+								</InputField>
+								<InputField name="РезультатЗагрузкиДокумент" id="35">
+									<DataPath>Объект.РезультатЗагрузки.Документ</DataPath>
+								</InputField>
+								<InputField name="РезультатЗагрузкиСтатус" id="36">
+									<DataPath>Объект.РезультатЗагрузки.Статус</DataPath>
+								</InputField>
+								<InputField name="РезультатЗагрузкиСообщение" id="37">
+									<DataPath>Объект.РезультатЗагрузки.Сообщение</DataPath>
+								</InputField>
+							</ChildItems>
+						</Table>
+					</ChildItems>
+				</Page>
+			</ChildItems>
+		</Pages>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="Объект" id="1">
+			<Type>
+				<v8:Type>cfg:ExternalDataProcessorObject.ПереносИсполнительныхЛистов</v8:Type>
+			</Type>
+			<MainAttribute>true</MainAttribute>
+			<SavedData>true</SavedData>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="ЗаполнитьДокументы" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Заполнить список</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Подобрать исполнительные листы, действующие на дату переноса (по регистру сведений "Плановые удержания")</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ЗаполнитьДокументы</Action>
+		</Command>
+		<Command name="ОтметитьВсе" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Отметить все</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Отметить все документы в списке</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ОтметитьВсе</Action>
+		</Command>
+		<Command name="СнятьОтметки" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Снять отметки</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Снять отметки со всех документов в списке</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>СнятьОтметки</Action>
+		</Command>
+		<Command name="ВыгрузитьВФайл" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Выгрузить в файл</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Выгрузить отмеченные документы в XML-файл обмена</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ВыгрузитьВФайл</Action>
+		</Command>
+		<Command name="ЗагрузитьИзФайла" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Загрузить из файла</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Загрузить документы из XML-файла обмена в текущую базу</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ЗагрузитьИзФайла</Action>
+		</Command>
+	</Commands>
+</Form>
