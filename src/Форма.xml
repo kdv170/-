@@ -1,0 +1,459 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.16">
+	<Title>
+		<v8:item>
+			<v8:lang>ru</v8:lang>
+			<v8:content>Перенос документов Исполнительный лист из ЗУП 3.1 в ERP 2</v8:content>
+		</v8:item>
+	</Title>
+	<AutoTitle>false</AutoTitle>
+	<CommandBarLocation>Top</CommandBarLocation>
+	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1">
+		<ChildItems>
+			<Button name="ФормаКомандаЗаполнить" id="101">
+				<Type>CommandBarButton</Type>
+				<DefaultButton>true</DefaultButton>
+				<CommandName>Form.Command.КомандаЗаполнить</CommandName>
+				<ExtendedTooltip name="ФормаКомандаЗаполнитьРасширеннаяПодсказка" id="102"/>
+			</Button>
+			<Button name="ФормаКомандаВыгрузить" id="103">
+				<Type>CommandBarButton</Type>
+				<CommandName>Form.Command.КомандаВыгрузить</CommandName>
+				<ExtendedTooltip name="ФормаКомандаВыгрузитьРасширеннаяПодсказка" id="104"/>
+			</Button>
+			<Button name="ФормаКомандаЗагрузить" id="105">
+				<Type>CommandBarButton</Type>
+				<CommandName>Form.Command.КомандаЗагрузить</CommandName>
+				<ExtendedTooltip name="ФормаКомандаЗагрузитьРасширеннаяПодсказка" id="106"/>
+			</Button>
+			<Button name="ФормаКомандаПроверитьПодключение" id="107">
+				<Type>CommandBarButton</Type>
+				<CommandName>Form.Command.КомандаПроверитьПодключение</CommandName>
+				<ExtendedTooltip name="ФормаКомандаПроверитьПодключениеРасширеннаяПодсказка" id="108"/>
+			</Button>
+			<Button name="ФормаКомандаПрямойПеренос" id="109">
+				<Type>CommandBarButton</Type>
+				<CommandName>Form.Command.КомандаПрямойПеренос</CommandName>
+				<ExtendedTooltip name="ФормаКомандаПрямойПереносРасширеннаяПодсказка" id="110"/>
+			</Button>
+		</ChildItems>
+	</AutoCommandBar>
+	<Events>
+		<Event name="ПриСозданииНаСервере">ПриСозданииНаСервере</Event>
+		<Event name="ПриОткрытии">ПриОткрытии</Event>
+	</Events>
+	<ChildItems>
+		<Pages name="СтраницыРежима" id="1">
+			<PagesRepresentation>TabsOnTop</PagesRepresentation>
+			<ChildItems>
+				<Page name="СтраницаОсновная" id="2">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Параметры переноса</v8:content>
+						</v8:item>
+					</Title>
+					<ChildItems>
+						<UsualGroup name="ГруппаРежимИДата" id="3">
+							<Group>Horizontal</Group>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ChildItems>
+								<InputField name="ДатаПереноса" id="4">
+									<DataPath>Объект.ДатаПереноса</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Дата переноса (срез регистра)</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Дата, на которую отбираются действующие удержания по регистру ПлановыеУдержания</v8:content>
+										</v8:item>
+									</ToolTip>
+									<Events>
+										<Event name="ПриИзменении">ДатаПереносаПриИзменении</Event>
+									</Events>
+								</InputField>
+								<RadioButtonField name="РежимРаботы" id="5">
+									<DataPath>Объект.РежимРаботы</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Режим</v8:content>
+										</v8:item>
+									</Title>
+									<RadioButtonType>RadioButtons</RadioButtonType>
+									<ChoiceList>
+										<xr:Item>
+											<xr:Presentation/>
+											<xr:CheckState>0</xr:CheckState>
+											<xr:Value xsi:type="xs:decimal">0</xr:Value>
+										</xr:Item>
+										<xr:Item>
+											<xr:Presentation/>
+											<xr:CheckState>0</xr:CheckState>
+											<xr:Value xsi:type="xs:decimal">1</xr:Value>
+										</xr:Item>
+										<xr:Item>
+											<xr:Presentation/>
+											<xr:CheckState>0</xr:CheckState>
+											<xr:Value xsi:type="xs:decimal">2</xr:Value>
+										</xr:Item>
+									</ChoiceList>
+									<Events>
+										<Event name="ПриИзменении">РежимРаботыПриИзменении</Event>
+									</Events>
+								</RadioButtonField>
+							</ChildItems>
+						</UsualGroup>
+						<UsualGroup name="ГруппаПараметрыОтбора" id="10">
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Отбор документов</v8:content>
+								</v8:item>
+							</Title>
+							<Group>Vertical</Group>
+							<ChildItems>
+								<UsualGroup name="ГруппаОтборыОргИСотр" id="11">
+									<Group>Horizontal</Group>
+									<ShowTitle>false</ShowTitle>
+									<ChildItems>
+										<InputField name="ОрганизацияОтбор" id="12">
+											<DataPath>Объект.ОрганизацияОтбор</DataPath>
+											<ClearButton>true</ClearButton>
+										</InputField>
+										<InputField name="СотрудникОтбор" id="13">
+											<DataPath>Объект.СотрудникОтбор</DataPath>
+											<ClearButton>true</ClearButton>
+										</InputField>
+									</ChildItems>
+								</UsualGroup>
+								<CheckBoxField name="ТолькоДействующиеПоДатамДокумента" id="14">
+									<DataPath>Объект.ТолькоДействующиеПоДатамДокумента</DataPath>
+									<CheckBoxType>Auto</CheckBoxType>
+								</CheckBoxField>
+							</ChildItems>
+						</UsualGroup>
+						<UsualGroup name="ГруппаПараметрыФайла" id="20">
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Параметры файла обмена</v8:content>
+								</v8:item>
+							</Title>
+							<Group>Horizontal</Group>
+							<ChildItems>
+								<InputField name="ФорматФайла" id="21">
+									<DataPath>Объект.ФорматФайла</DataPath>
+									<ListChoiceMode>true</ListChoiceMode>
+									<ChoiceList>
+										<xr:Item>
+											<xr:Presentation>
+												<v8:item><v8:lang>ru</v8:lang><v8:content>XML</v8:content></v8:item>
+											</xr:Presentation>
+											<xr:CheckState>0</xr:CheckState>
+											<xr:Value xsi:type="xs:string">XML</xr:Value>
+										</xr:Item>
+										<xr:Item>
+											<xr:Presentation>
+												<v8:item><v8:lang>ru</v8:lang><v8:content>JSON</v8:content></v8:item>
+											</xr:Presentation>
+											<xr:CheckState>0</xr:CheckState>
+											<xr:Value xsi:type="xs:string">JSON</xr:Value>
+										</xr:Item>
+									</ChoiceList>
+									<Events>
+										<Event name="ПриИзменении">ФорматФайлаПриИзменении</Event>
+									</Events>
+								</InputField>
+								<InputField name="ПутьКФайлу" id="22">
+									<DataPath>Объект.ПутьКФайлу</DataPath>
+									<ChoiceButton>true</ChoiceButton>
+								</InputField>
+							</ChildItems>
+						</UsualGroup>
+						<UsualGroup name="ГруппаПараметрыЗагрузки" id="30">
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Параметры загрузки в ERP</v8:content>
+								</v8:item>
+							</Title>
+							<Group>Vertical</Group>
+							<ChildItems>
+								<CheckBoxField name="ПроводитьДокументы" id="31">
+									<DataPath>Объект.ПроводитьДокументы</DataPath>
+									<CheckBoxType>Auto</CheckBoxType>
+								</CheckBoxField>
+								<CheckBoxField name="ПерезаписыватьСуществующие" id="32">
+									<DataPath>Объект.ПерезаписыватьСуществующие</DataPath>
+									<CheckBoxType>Auto</CheckBoxType>
+								</CheckBoxField>
+								<CheckBoxField name="СоздаватьНовыеЭлементыНСИ" id="33">
+									<DataPath>Объект.СоздаватьНовыеЭлементыНСИ</DataPath>
+									<CheckBoxType>Auto</CheckBoxType>
+								</CheckBoxField>
+								<CheckBoxField name="УстанавливатьИсходныйНомерИДату" id="34">
+									<DataPath>Объект.УстанавливатьИсходныйНомерИДату</DataPath>
+									<CheckBoxType>Auto</CheckBoxType>
+								</CheckBoxField>
+							</ChildItems>
+						</UsualGroup>
+						<UsualGroup name="ГруппаПараметрыCOM" id="40">
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Параметры подключения к 1С:ЗУП</v8:content>
+								</v8:item>
+							</Title>
+							<Group>Vertical</Group>
+							<ChildItems>
+								<InputField name="COM_ТипПодключения" id="41">
+									<DataPath>Объект.COM_ТипПодключения</DataPath>
+									<ListChoiceMode>true</ListChoiceMode>
+									<ChoiceList>
+										<xr:Item>
+											<xr:Presentation><v8:item><v8:lang>ru</v8:lang><v8:content>Файловый</v8:content></v8:item></xr:Presentation>
+											<xr:CheckState>0</xr:CheckState>
+											<xr:Value xsi:type="xs:string">Файловый</xr:Value>
+										</xr:Item>
+										<xr:Item>
+											<xr:Presentation><v8:item><v8:lang>ru</v8:lang><v8:content>Серверный</v8:content></v8:item></xr:Presentation>
+											<xr:CheckState>0</xr:CheckState>
+											<xr:Value xsi:type="xs:string">Серверный</xr:Value>
+										</xr:Item>
+									</ChoiceList>
+									<Events>
+										<Event name="ПриИзменении">COM_ТипПодключенияПриИзменении</Event>
+									</Events>
+								</InputField>
+								<InputField name="COM_КаталогИБ" id="42">
+									<DataPath>Объект.COM_КаталогИБ</DataPath>
+									<ChoiceButton>true</ChoiceButton>
+								</InputField>
+								<InputField name="COM_Сервер1С" id="43">
+									<DataPath>Объект.COM_Сервер1С</DataPath>
+								</InputField>
+								<InputField name="COM_ИмяБазы" id="44">
+									<DataPath>Объект.COM_ИмяБазы</DataPath>
+								</InputField>
+								<InputField name="COM_Пользователь" id="45">
+									<DataPath>Объект.COM_Пользователь</DataPath>
+								</InputField>
+								<InputField name="COM_Пароль" id="46">
+									<DataPath>Объект.COM_Пароль</DataPath>
+									<PasswordMode>true</PasswordMode>
+								</InputField>
+							</ChildItems>
+						</UsualGroup>
+					</ChildItems>
+				</Page>
+				<Page name="СтраницаЖурнал" id="50">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Журнал сообщений</v8:content>
+						</v8:item>
+					</Title>
+					<ChildItems>
+						<Table name="ЖурналСообщений" id="51">
+							<Representation>List</Representation>
+							<DataPath>Объект.ЖурналСообщений</DataPath>
+							<AutoInsertNewRow>false</AutoInsertNewRow>
+							<EnableStartDrag>false</EnableStartDrag>
+							<EnableDrag>false</EnableDrag>
+							<ChildItems>
+								<InputField name="ЖурналСообщенийВремя" id="52">
+									<DataPath>Объект.ЖурналСообщений.Время</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<Format>ДФ='dd.MM.yyyy HH:mm:ss'</Format>
+									<Width>15</Width>
+								</InputField>
+								<InputField name="ЖурналСообщенийТип" id="53">
+									<DataPath>Объект.ЖурналСообщений.Тип</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<Width>12</Width>
+								</InputField>
+								<InputField name="ЖурналСообщенийТекст" id="54">
+									<DataPath>Объект.ЖурналСообщений.Текст</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<AutoMaxWidth>false</AutoMaxWidth>
+								</InputField>
+							</ChildItems>
+						</Table>
+					</ChildItems>
+				</Page>
+			</ChildItems>
+		</Pages>
+		<UsualGroup name="ГруппаТаблицаДокументов" id="60">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Отобранные исполнительные листы</v8:content>
+				</v8:item>
+			</Title>
+			<Group>Vertical</Group>
+			<ChildItems>
+				<CommandBar name="КоманднаяПанельТаблицы" id="61">
+					<ChildItems>
+						<Button name="ТаблицаОтметитьВсе" id="62">
+							<Type>CommandBarButton</Type>
+							<CommandName>Form.Command.КомандаОтметитьВсе</CommandName>
+						</Button>
+						<Button name="ТаблицаСнятьОтметки" id="63">
+							<Type>CommandBarButton</Type>
+							<CommandName>Form.Command.КомандаСнятьОтметки</CommandName>
+						</Button>
+					</ChildItems>
+				</CommandBar>
+				<Table name="ТаблицаДокументов" id="70">
+					<Representation>List</Representation>
+					<DataPath>Объект.ТаблицаДокументов</DataPath>
+					<AutoInsertNewRow>false</AutoInsertNewRow>
+					<ChildItems>
+						<CheckBoxField name="ТаблицаДокументовПометка" id="71">
+							<DataPath>Объект.ТаблицаДокументов.Пометка</DataPath>
+							<EditMode>EnterOnInput</EditMode>
+							<CheckBoxType>Auto</CheckBoxType>
+							<Width>3</Width>
+						</CheckBoxField>
+						<InputField name="ТаблицаДокументовНомер" id="72">
+							<DataPath>Объект.ТаблицаДокументов.Номер</DataPath>
+							<EditMode>EnterOnInput</EditMode>
+							<Width>10</Width>
+						</InputField>
+						<InputField name="ТаблицаДокументовДата" id="73">
+							<DataPath>Объект.ТаблицаДокументов.Дата</DataPath>
+							<EditMode>EnterOnInput</EditMode>
+							<Format>ДФ=dd.MM.yyyy</Format>
+							<Width>10</Width>
+						</InputField>
+						<InputField name="ТаблицаДокументовОрганизация" id="74">
+							<DataPath>Объект.ТаблицаДокументов.ОрганизацияНаименование</DataPath>
+							<EditMode>EnterOnInput</EditMode>
+							<Width>18</Width>
+						</InputField>
+						<InputField name="ТаблицаДокументовСотрудник" id="75">
+							<DataPath>Объект.ТаблицаДокументов.СотрудникНаименование</DataPath>
+							<EditMode>EnterOnInput</EditMode>
+							<Width>20</Width>
+						</InputField>
+						<InputField name="ТаблицаДокументовПолучатель" id="76">
+							<DataPath>Объект.ТаблицаДокументов.ПолучательНаименование</DataPath>
+							<EditMode>EnterOnInput</EditMode>
+							<Width>18</Width>
+						</InputField>
+						<InputField name="ТаблицаДокументовВидДокумента" id="77">
+							<DataPath>Объект.ТаблицаДокументов.ВидИсполнительногоДокумента</DataPath>
+							<EditMode>EnterOnInput</EditMode>
+							<Width>15</Width>
+						</InputField>
+						<InputField name="ТаблицаДокументовНомерИсп" id="78">
+							<DataPath>Объект.ТаблицаДокументов.НомерИсполнительногоДокумента</DataPath>
+							<EditMode>EnterOnInput</EditMode>
+							<Width>12</Width>
+						</InputField>
+						<InputField name="ТаблицаДокументовСпособРасчета" id="79">
+							<DataPath>Объект.ТаблицаДокументов.СпособРасчета</DataPath>
+							<EditMode>EnterOnInput</EditMode>
+							<Width>15</Width>
+						</InputField>
+						<InputField name="ТаблицаДокументовРазмер" id="80">
+							<DataPath>Объект.ТаблицаДокументов.Размер</DataPath>
+							<EditMode>EnterOnInput</EditMode>
+							<Width>10</Width>
+						</InputField>
+						<InputField name="ТаблицаДокументовДатаНачала" id="81">
+							<DataPath>Объект.ТаблицаДокументов.ДатаНачала</DataPath>
+							<EditMode>EnterOnInput</EditMode>
+							<Format>ДФ=dd.MM.yyyy</Format>
+							<Width>10</Width>
+						</InputField>
+						<InputField name="ТаблицаДокументовДатаОкончания" id="82">
+							<DataPath>Объект.ТаблицаДокументов.ДатаОкончания</DataPath>
+							<EditMode>EnterOnInput</EditMode>
+							<Format>ДФ=dd.MM.yyyy</Format>
+							<Width>10</Width>
+						</InputField>
+						<CheckBoxField name="ТаблицаДокументовДействуетПоРегистру" id="83">
+							<DataPath>Объект.ТаблицаДокументов.ДействуетПоРегистру</DataPath>
+							<EditMode>EnterOnInput</EditMode>
+							<CheckBoxType>Auto</CheckBoxType>
+							<Width>8</Width>
+						</CheckBoxField>
+						<InputField name="ТаблицаДокументовСтатус" id="84">
+							<DataPath>Объект.ТаблицаДокументов.СтатусПереноса</DataPath>
+							<EditMode>EnterOnInput</EditMode>
+							<Width>12</Width>
+						</InputField>
+					</ChildItems>
+				</Table>
+			</ChildItems>
+		</UsualGroup>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="Объект" id="1">
+			<Type>
+				<v8:Type xmlns:d3p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d3p1:ExternalDataProcessorObject.ПереносИсполнительныхЛистовИзЗУПвERP</v8:Type>
+			</Type>
+			<MainAttribute>true</MainAttribute>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="КомандаЗаполнить" id="1">
+			<Title>
+				<v8:item><v8:lang>ru</v8:lang><v8:content>Заполнить по регистру</v8:content></v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item><v8:lang>ru</v8:lang><v8:content>Отобрать действующие документы по регистру сведений ПлановыеУдержания</v8:content></v8:item>
+			</ToolTip>
+			<Action>КомандаЗаполнить</Action>
+		</Command>
+		<Command name="КомандаВыгрузить" id="2">
+			<Title>
+				<v8:item><v8:lang>ru</v8:lang><v8:content>Выгрузить в файл</v8:content></v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item><v8:lang>ru</v8:lang><v8:content>Выгрузить отмеченные документы в файл обмена XML или JSON</v8:content></v8:item>
+			</ToolTip>
+			<Action>КомандаВыгрузить</Action>
+		</Command>
+		<Command name="КомандаЗагрузить" id="3">
+			<Title>
+				<v8:item><v8:lang>ru</v8:lang><v8:content>Загрузить в ERP</v8:content></v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item><v8:lang>ru</v8:lang><v8:content>Загрузить документы из файла в информационную базу ERP</v8:content></v8:item>
+			</ToolTip>
+			<Action>КомандаЗагрузить</Action>
+		</Command>
+		<Command name="КомандаПроверитьПодключение" id="4">
+			<Title>
+				<v8:item><v8:lang>ru</v8:lang><v8:content>Проверить COM-подключение</v8:content></v8:item>
+			</Title>
+			<Action>КомандаПроверитьПодключение</Action>
+		</Command>
+		<Command name="КомандаПрямойПеренос" id="5">
+			<Title>
+				<v8:item><v8:lang>ru</v8:lang><v8:content>Выполнить прямой перенос</v8:content></v8:item>
+			</Title>
+			<Action>КомандаПрямойПеренос</Action>
+		</Command>
+		<Command name="КомандаОтметитьВсе" id="6">
+			<Title>
+				<v8:item><v8:lang>ru</v8:lang><v8:content>Отметить все</v8:content></v8:item>
+			</Title>
+			<Action>КомандаОтметитьВсе</Action>
+		</Command>
+		<Command name="КомандаСнятьОтметки" id="7">
+			<Title>
+				<v8:item><v8:lang>ru</v8:lang><v8:content>Снять отметки</v8:content></v8:item>
+			</Title>
+			<Action>КомандаСнятьОтметки</Action>
+		</Command>
+	</Commands>
+</Form>
