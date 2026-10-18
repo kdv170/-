@@ -20,7 +20,7 @@
 			<Title formatted="false">
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>В список попадают проведённые документы «Исполнительный лист», по которым на конец даты переноса в регистре сведений «Плановые удержания» есть действующая запись: удержание используется, а срок «Действует до» пустой или не раньше этой даты. Заполненная дата окончания документа тоже должна покрывать дату переноса. Выгрузка выполняется в ЗУП, загрузка — в ERP.</v8:content>
+					<v8:content>В список попадают проведённые документы «Исполнительный лист», по которым на конец даты переноса в регистре сведений «Плановые удержания» базы ЗУП есть действующая запись: удержание используется, а срок «Действует до» пустой или не раньше этой даты. Заполненная дата окончания документа тоже должна покрывать дату переноса. Список читается из ЗУП по COM-соединению, загрузка выполняется в текущую базу.</v8:content>
 				</v8:item>
 			</Title>
 			<ContextMenu name="ПояснениеОтбораКонтекстноеМеню" id="2"/>
@@ -32,6 +32,112 @@
 			<ContextMenu name="ПредставлениеБазыКонтекстноеМеню" id="5"/>
 			<ExtendedTooltip name="ПредставлениеБазыРасширеннаяПодсказка" id="6"/>
 		</LabelField>
+		<UsualGroup name="ПодключениеКЗУП" id="60">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Подключение к базе ЗУП</v8:content>
+				</v8:item>
+			</Title>
+			<Group>Vertical</Group>
+			<Behavior>Auto</Behavior>
+			<Representation>NormalSeparation</Representation>
+			<ShowTitle>true</ShowTitle>
+			<ExtendedTooltip name="ПодключениеКЗУПРасширеннаяПодсказка" id="61"/>
+			<ChildItems>
+				<CheckBoxField name="ФайловаяБаза" id="62">
+					<DataPath>ФайловаяБаза</DataPath>
+					<TitleLocation>Right</TitleLocation>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Включено — база ЗУП лежит в каталоге на этом компьютере. Выключено — база на сервере 1С:Предприятия.</v8:content>
+						</v8:item>
+					</ToolTip>
+					<ToolTipRepresentation>Button</ToolTipRepresentation>
+					<CheckBoxType>Auto</CheckBoxType>
+					<ContextMenu name="ФайловаяБазаКонтекстноеМеню" id="63"/>
+					<ExtendedTooltip name="ФайловаяБазаРасширеннаяПодсказка" id="64"/>
+					<Events>
+						<Event name="OnChange">ФайловаяБазаПриИзменении</Event>
+					</Events>
+				</CheckBoxField>
+				<UsualGroup name="ГруппаПутьБазы" id="65">
+					<Visible>false</Visible>
+					<Group>AlwaysHorizontal</Group>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="ГруппаПутьБазыРасширеннаяПодсказка" id="66"/>
+					<ChildItems>
+						<InputField name="КаталогБазы" id="67">
+							<DataPath>КаталогБазы</DataPath>
+							<AutoMaxWidth>false</AutoMaxWidth>
+							<MaxWidth>60</MaxWidth>
+							<HorizontalStretch>true</HorizontalStretch>
+							<ChoiceButton>false</ChoiceButton>
+							<ContextMenu name="КаталогБазыКонтекстноеМеню" id="68"/>
+							<ExtendedTooltip name="КаталогБазыРасширеннаяПодсказка" id="69"/>
+						</InputField>
+						<Button name="ВыбратьКаталог" id="70">
+							<Type>UsualButton</Type>
+							<CommandName>Form.Command.ВыбратьКаталог</CommandName>
+							<ExtendedTooltip name="ВыбратьКаталогРасширеннаяПодсказка" id="71"/>
+						</Button>
+					</ChildItems>
+				</UsualGroup>
+				<UsualGroup name="ГруппаСервер" id="72">
+					<Group>AlwaysHorizontal</Group>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="ГруппаСерверРасширеннаяПодсказка" id="73"/>
+					<ChildItems>
+						<InputField name="СерверЗУП" id="74">
+							<DataPath>СерверЗУП</DataPath>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Имя или адрес сервера 1С:Предприятия, как в параметре Srvr строки соединения.</v8:content>
+								</v8:item>
+							</ToolTip>
+							<ToolTipRepresentation>Button</ToolTipRepresentation>
+							<ContextMenu name="СерверЗУПКонтекстноеМеню" id="75"/>
+							<ExtendedTooltip name="СерверЗУПРасширеннаяПодсказка" id="76"/>
+						</InputField>
+						<InputField name="ИмяБазыЗУП" id="77">
+							<DataPath>ИмяБазыЗУП</DataPath>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Имя базы на сервере, как в параметре Ref строки соединения.</v8:content>
+								</v8:item>
+							</ToolTip>
+							<ToolTipRepresentation>Button</ToolTipRepresentation>
+							<ContextMenu name="ИмяБазыЗУПКонтекстноеМеню" id="78"/>
+							<ExtendedTooltip name="ИмяБазыЗУПРасширеннаяПодсказка" id="79"/>
+						</InputField>
+					</ChildItems>
+				</UsualGroup>
+				<UsualGroup name="ГруппаАутентификация" id="80">
+					<Group>AlwaysHorizontal</Group>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="ГруппаАутентификацияРасширеннаяПодсказка" id="81"/>
+					<ChildItems>
+						<InputField name="ПользовательЗУП" id="82">
+							<DataPath>ПользовательЗУП</DataPath>
+							<ContextMenu name="ПользовательЗУПКонтекстноеМеню" id="83"/>
+							<ExtendedTooltip name="ПользовательЗУПРасширеннаяПодсказка" id="84"/>
+						</InputField>
+						<InputField name="ПарольЗУП" id="85">
+							<DataPath>ПарольЗУП</DataPath>
+							<PasswordMode>true</PasswordMode>
+							<ContextMenu name="ПарольЗУПКонтекстноеМеню" id="86"/>
+							<ExtendedTooltip name="ПарольЗУПРасширеннаяПодсказка" id="87"/>
+						</InputField>
+					</ChildItems>
+				</UsualGroup>
+			</ChildItems>
+		</UsualGroup>
 		<UsualGroup name="ГруппаОтбор" id="10">
 			<Group>AlwaysHorizontal</Group>
 			<Representation>None</Representation>
@@ -45,6 +151,13 @@
 				</InputField>
 				<InputField name="Организация" id="15">
 					<DataPath>Организация</DataPath>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Организация текущей базы. В ЗУП такая же организация ищется по ИНН и КПП.</v8:content>
+						</v8:item>
+					</ToolTip>
+					<ToolTipRepresentation>Button</ToolTipRepresentation>
 					<ClearButton>true</ClearButton>
 					<InputHint>
 						<v8:item>
@@ -634,6 +747,92 @@
 				</v8:StringQualifiers>
 			</Type>
 		</Attribute>
+		<Attribute name="ФайловаяБаза" id="540">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Файловая база</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="КаталогБазы" id="541">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Каталог базы</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="СерверЗУП" id="542">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сервер 1С</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="ИмяБазыЗУП" id="543">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Имя базы</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="ПользовательЗУП" id="544">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Пользователь</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="ПарольЗУП" id="545">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Пароль</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
 		<Attribute name="ПредставлениеБазы" id="532">
 			<Title>
 				<v8:item>
@@ -655,13 +854,13 @@
 			<Title>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Заполнить по регистру</v8:content>
+					<v8:content>Заполнить из ЗУП</v8:content>
 				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Подобрать исполнительные листы, действующие на дату переноса</v8:content>
+					<v8:content>Прочитать из базы ЗУП исполнительные листы, действующие на дату переноса</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Action>ЗаполнитьПоРегистру</Action>
@@ -710,6 +909,21 @@
 				</v8:item>
 			</Title>
 			<Action>СнятьФлажки</Action>
+		</Command>
+		<Command name="ВыбратьКаталог" id="407">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Выбрать каталог</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Выбрать каталог файловой базы ЗУП</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ВыбратьКаталог</Action>
 		</Command>
 	</Commands>
 </Form>
