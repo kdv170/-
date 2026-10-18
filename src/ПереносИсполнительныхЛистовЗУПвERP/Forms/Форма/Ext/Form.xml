@@ -1,0 +1,879 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcssch="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.17">
+	<Title>
+		<v8:item>
+			<v8:lang>ru</v8:lang>
+			<v8:content>Перенос исполнительных листов ЗУП → ERP</v8:content>
+		</v8:item>
+	</Title>
+	<AutoTitle>false</AutoTitle>
+	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1">
+		<Autofill>false</Autofill>
+		<ChildItems>
+			<Button name="ФормаЗаполнить" id="201">
+				<Type>CommandBarButton</Type>
+				<DefaultButton>true</DefaultButton>
+				<CommandName>Form.Command.Заполнить</CommandName>
+				<ExtendedTooltip name="ФормаЗаполнитьРасширеннаяПодсказка" id="301"/>
+			</Button>
+			<Button name="ФормаВыгрузитьВФайл" id="202">
+				<Type>CommandBarButton</Type>
+				<CommandName>Form.Command.ВыгрузитьВФайл</CommandName>
+				<ExtendedTooltip name="ФормаВыгрузитьВФайлРасширеннаяПодсказка" id="302"/>
+			</Button>
+			<Button name="ФормаЗагрузитьВERP" id="203">
+				<Type>CommandBarButton</Type>
+				<CommandName>Form.Command.ЗагрузитьВERP</CommandName>
+				<ExtendedTooltip name="ФормаЗагрузитьВERPРасширеннаяПодсказка" id="303"/>
+			</Button>
+			<Button name="ФормаПеренестиЧерезCOM" id="204">
+				<Type>CommandBarButton</Type>
+				<CommandName>Form.Command.ПеренестиЧерезCOM</CommandName>
+				<ExtendedTooltip name="ФормаПеренестиЧерезCOMРасширеннаяПодсказка" id="304"/>
+			</Button>
+		</ChildItems>
+	</AutoCommandBar>
+	<Events>
+		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
+		<Event name="OnOpen">ПриОткрытии</Event>
+	</Events>
+	<ChildItems>
+		<UsualGroup name="ГруппаПараметры" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Параметры переноса</v8:content>
+				</v8:item>
+			</Title>
+			<Group>Vertical</Group>
+			<Representation>NormalSeparation</Representation>
+			<ShowTitle>true</ShowTitle>
+			<ExtendedTooltip name="ГруппаПараметрыРасширеннаяПодсказка" id="101"/>
+			<ChildItems>
+				<InputField name="РежимРаботы" id="2">
+					<DataPath>РежимРаботы</DataPath>
+					<ListChoiceMode>true</ListChoiceMode>
+					<DropListButton>true</DropListButton>
+					<ContextMenu name="РежимРаботыКонтекстноеМеню" id="102"/>
+					<ExtendedTooltip name="РежимРаботыРасширеннаяПодсказка" id="103"/>
+					<Events>
+						<Event name="OnChange">РежимРаботыПриИзменении</Event>
+					</Events>
+				</InputField>
+				<InputField name="ДатаПереноса" id="3">
+					<DataPath>ДатаПереноса</DataPath>
+					<ContextMenu name="ДатаПереносаКонтекстноеМеню" id="104"/>
+					<ExtendedTooltip name="ДатаПереносаРасширеннаяПодсказка" id="105"/>
+				</InputField>
+				<InputField name="Организация" id="4">
+					<DataPath>Организация</DataPath>
+					<ClearButton>true</ClearButton>
+					<ContextMenu name="ОрганизацияКонтекстноеМеню" id="106"/>
+					<ExtendedTooltip name="ОрганизацияРасширеннаяПодсказка" id="107"/>
+				</InputField>
+				<UsualGroup name="ГруппаФлаги" id="5">
+					<Group>Horizontal</Group>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="ГруппаФлагиРасширеннаяПодсказка" id="108"/>
+					<ChildItems>
+						<CheckBoxField name="ПроводитьДокументы" id="6">
+							<DataPath>ПроводитьДокументы</DataPath>
+							<CheckBoxType>Auto</CheckBoxType>
+							<ContextMenu name="ПроводитьДокументыКонтекстноеМеню" id="109"/>
+							<ExtendedTooltip name="ПроводитьДокументыРасширеннаяПодсказка" id="110"/>
+						</CheckBoxField>
+						<CheckBoxField name="ПерезаписыватьСуществующие" id="7">
+							<DataPath>ПерезаписыватьСуществующие</DataPath>
+							<CheckBoxType>Auto</CheckBoxType>
+							<ContextMenu name="ПерезаписыватьСуществующиеКонтекстноеМеню" id="111"/>
+							<ExtendedTooltip name="ПерезаписыватьСуществующиеРасширеннаяПодсказка" id="112"/>
+						</CheckBoxField>
+						<CheckBoxField name="ПереноситьОстатокПредела" id="8">
+							<DataPath>ПереноситьОстатокПредела</DataPath>
+							<CheckBoxType>Auto</CheckBoxType>
+							<ContextMenu name="ПереноситьОстатокПределаКонтекстноеМеню" id="113"/>
+							<ExtendedTooltip name="ПереноситьОстатокПределаРасширеннаяПодсказка" id="114"/>
+						</CheckBoxField>
+						<CheckBoxField name="СоздаватьКонтрагентов" id="9">
+							<DataPath>СоздаватьКонтрагентов</DataPath>
+							<CheckBoxType>Auto</CheckBoxType>
+							<ContextMenu name="СоздаватьКонтрагентовКонтекстноеМеню" id="115"/>
+							<ExtendedTooltip name="СоздаватьКонтрагентовРасширеннаяПодсказка" id="116"/>
+						</CheckBoxField>
+					</ChildItems>
+				</UsualGroup>
+			</ChildItems>
+		</UsualGroup>
+		<UsualGroup name="ГруппаФайл" id="10">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Файл обмена</v8:content>
+				</v8:item>
+			</Title>
+			<Group>Vertical</Group>
+			<Representation>NormalSeparation</Representation>
+			<ShowTitle>true</ShowTitle>
+			<ExtendedTooltip name="ГруппаФайлРасширеннаяПодсказка" id="117"/>
+			<ChildItems>
+				<InputField name="ИмяФайла" id="11">
+					<DataPath>ИмяФайла</DataPath>
+					<ChoiceButton>true</ChoiceButton>
+					<ContextMenu name="ИмяФайлаКонтекстноеМеню" id="118"/>
+					<ExtendedTooltip name="ИмяФайлаРасширеннаяПодсказка" id="119"/>
+					<Events>
+						<Event name="StartChoice">ИмяФайлаНачалоВыбора</Event>
+					</Events>
+				</InputField>
+			</ChildItems>
+		</UsualGroup>
+		<UsualGroup name="ГруппаCOM" id="12">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Подключение к ЗУП</v8:content>
+				</v8:item>
+			</Title>
+			<Group>Vertical</Group>
+			<Representation>NormalSeparation</Representation>
+			<ShowTitle>true</ShowTitle>
+			<ExtendedTooltip name="ГруппаCOMРасширеннаяПодсказка" id="120"/>
+			<ChildItems>
+				<InputField name="ВариантИнформационнойБазы" id="13">
+					<DataPath>ВариантИнформационнойБазы</DataPath>
+					<ListChoiceMode>true</ListChoiceMode>
+					<DropListButton>true</DropListButton>
+					<ContextMenu name="ВариантИнформационнойБазыКонтекстноеМеню" id="121"/>
+					<ExtendedTooltip name="ВариантИнформационнойБазыРасширеннаяПодсказка" id="122"/>
+					<Events>
+						<Event name="OnChange">ВариантИнформационнойБазыПриИзменении</Event>
+					</Events>
+				</InputField>
+				<InputField name="КаталогИБ" id="14">
+					<DataPath>КаталогИБ</DataPath>
+					<ChoiceButton>true</ChoiceButton>
+					<ContextMenu name="КаталогИБКонтекстноеМеню" id="123"/>
+					<ExtendedTooltip name="КаталогИБРасширеннаяПодсказка" id="124"/>
+					<Events>
+						<Event name="StartChoice">КаталогИБНачалоВыбора</Event>
+					</Events>
+				</InputField>
+				<InputField name="СерверИБ" id="15">
+					<DataPath>СерверИБ</DataPath>
+					<ContextMenu name="СерверИБКонтекстноеМеню" id="125"/>
+					<ExtendedTooltip name="СерверИБРасширеннаяПодсказка" id="126"/>
+				</InputField>
+				<InputField name="ИмяИБ" id="16">
+					<DataPath>ИмяИБ</DataPath>
+					<ContextMenu name="ИмяИБКонтекстноеМеню" id="127"/>
+					<ExtendedTooltip name="ИмяИБРасширеннаяПодсказка" id="128"/>
+				</InputField>
+				<InputField name="ПользовательИБ" id="17">
+					<DataPath>ПользовательИБ</DataPath>
+					<ContextMenu name="ПользовательИБКонтекстноеМеню" id="129"/>
+					<ExtendedTooltip name="ПользовательИБРасширеннаяПодсказка" id="130"/>
+				</InputField>
+				<InputField name="ПарольИБ" id="18">
+					<DataPath>ПарольИБ</DataPath>
+					<PasswordMode>true</PasswordMode>
+					<ContextMenu name="ПарольИБКонтекстноеМеню" id="131"/>
+					<ExtendedTooltip name="ПарольИБРасширеннаяПодсказка" id="132"/>
+				</InputField>
+			</ChildItems>
+		</UsualGroup>
+		<UsualGroup name="ГруппаДокументы" id="19">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Действующие исполнительные листы</v8:content>
+				</v8:item>
+			</Title>
+			<Group>Vertical</Group>
+			<Representation>NormalSeparation</Representation>
+			<ShowTitle>true</ShowTitle>
+			<ExtendedTooltip name="ГруппаДокументыРасширеннаяПодсказка" id="133"/>
+			<ChildItems>
+				<Table name="ДокументыКПереносу" id="20">
+					<Representation>List</Representation>
+					<DataPath>ДокументыКПереносу</DataPath>
+					<TitleLocation>None</TitleLocation>
+					<ChangeRowSet>false</ChangeRowSet>
+					<ChangeRowOrder>false</ChangeRowOrder>
+					<HeightInTableRows>12</HeightInTableRows>
+					<SearchStringLocation>None</SearchStringLocation>
+					<ViewStatusLocation>None</ViewStatusLocation>
+					<SearchControlLocation>None</SearchControlLocation>
+					<ContextMenu name="ДокументыКПереносуКонтекстноеМеню" id="21"/>
+					<AutoCommandBar name="ДокументыКПереносуКоманднаяПанель" id="22">
+						<Autofill>false</Autofill>
+						<ChildItems>
+							<Button name="ДокументыКПереносуУстановитьПометки" id="23">
+								<Type>CommandBarButton</Type>
+								<CommandName>Form.Command.УстановитьПометки</CommandName>
+								<ExtendedTooltip name="ДокументыКПереносуУстановитьПометкиРасширеннаяПодсказка" id="134"/>
+							</Button>
+							<Button name="ДокументыКПереносуСнятьПометки" id="24">
+								<Type>CommandBarButton</Type>
+								<CommandName>Form.Command.СнятьПометки</CommandName>
+								<ExtendedTooltip name="ДокументыКПереносуСнятьПометкиРасширеннаяПодсказка" id="135"/>
+							</Button>
+						</ChildItems>
+					</AutoCommandBar>
+					<ExtendedTooltip name="ДокументыКПереносуРасширеннаяПодсказка" id="136"/>
+					<SearchStringAddition name="ДокументыКПереносуСтрокаПоиска" id="70">
+						<AdditionSource>
+							<Item>ДокументыКПереносу</Item>
+							<Type>SearchStringRepresentation</Type>
+						</AdditionSource>
+						<ContextMenu name="ДокументыКПереносуСтрокаПоискаКонтекстноеМеню" id="71"/>
+						<ExtendedTooltip name="ДокументыКПереносуСтрокаПоискаРасширеннаяПодсказка" id="72"/>
+					</SearchStringAddition>
+					<ViewStatusAddition name="ДокументыКПереносуСостояниеПросмотра" id="73">
+						<AdditionSource>
+							<Item>ДокументыКПереносу</Item>
+							<Type>ViewStatusRepresentation</Type>
+						</AdditionSource>
+						<ContextMenu name="ДокументыКПереносуСостояниеПросмотраКонтекстноеМеню" id="74"/>
+						<ExtendedTooltip name="ДокументыКПереносуСостояниеПросмотраРасширеннаяПодсказка" id="75"/>
+					</ViewStatusAddition>
+					<SearchControlAddition name="ДокументыКПереносуУправлениеПоиском" id="76">
+						<AdditionSource>
+							<Item>ДокументыКПереносу</Item>
+							<Type>SearchControl</Type>
+						</AdditionSource>
+						<ContextMenu name="ДокументыКПереносуУправлениеПоискомКонтекстноеМеню" id="77"/>
+						<ExtendedTooltip name="ДокументыКПереносуУправлениеПоискомРасширеннаяПодсказка" id="78"/>
+					</SearchControlAddition>
+					<ChildItems>
+						<CheckBoxField name="ДокументыКПереносуПометка" id="40">
+							<DataPath>ДокументыКПереносу.Пометка</DataPath>
+							<EditMode>Enter</EditMode>
+							<CheckBoxType>Auto</CheckBoxType>
+							<ContextMenu name="ДокументыКПереносуПометкаКонтекстноеМеню" id="140"/>
+							<ExtendedTooltip name="ДокументыКПереносуПометкаРасширеннаяПодсказка" id="141"/>
+						</CheckBoxField>
+						<InputField name="ДокументыКПереносуНомер" id="41">
+							<DataPath>ДокументыКПереносу.Номер</DataPath>
+							<ReadOnly>true</ReadOnly>
+							<EditMode>Enter</EditMode>
+							<ContextMenu name="ДокументыКПереносуНомерКонтекстноеМеню" id="142"/>
+							<ExtendedTooltip name="ДокументыКПереносуНомерРасширеннаяПодсказка" id="143"/>
+						</InputField>
+						<InputField name="ДокументыКПереносуДата" id="42">
+							<DataPath>ДокументыКПереносу.Дата</DataPath>
+							<ReadOnly>true</ReadOnly>
+							<EditMode>Enter</EditMode>
+							<ContextMenu name="ДокументыКПереносуДатаКонтекстноеМеню" id="144"/>
+							<ExtendedTooltip name="ДокументыКПереносуДатаРасширеннаяПодсказка" id="145"/>
+						</InputField>
+						<InputField name="ДокументыКПереносуОрганизацияПредставление" id="43">
+							<DataPath>ДокументыКПереносу.ОрганизацияПредставление</DataPath>
+							<ReadOnly>true</ReadOnly>
+							<EditMode>Enter</EditMode>
+							<ContextMenu name="ДокументыКПереносуОрганизацияПредставлениеКонтекстноеМеню" id="146"/>
+							<ExtendedTooltip name="ДокументыКПереносуОрганизацияПредставлениеРасширеннаяПодсказка" id="147"/>
+						</InputField>
+						<InputField name="ДокументыКПереносуСотрудникПредставление" id="44">
+							<DataPath>ДокументыКПереносу.СотрудникПредставление</DataPath>
+							<ReadOnly>true</ReadOnly>
+							<EditMode>Enter</EditMode>
+							<ContextMenu name="ДокументыКПереносуСотрудникПредставлениеКонтекстноеМеню" id="148"/>
+							<ExtendedTooltip name="ДокументыКПереносуСотрудникПредставлениеРасширеннаяПодсказка" id="149"/>
+						</InputField>
+						<InputField name="ДокументыКПереносуПолучательПредставление" id="45">
+							<DataPath>ДокументыКПереносу.ПолучательПредставление</DataPath>
+							<ReadOnly>true</ReadOnly>
+							<EditMode>Enter</EditMode>
+							<ContextMenu name="ДокументыКПереносуПолучательПредставлениеКонтекстноеМеню" id="150"/>
+							<ExtendedTooltip name="ДокументыКПереносуПолучательПредставлениеРасширеннаяПодсказка" id="151"/>
+						</InputField>
+						<InputField name="ДокументыКПереносуДатаДействия" id="46">
+							<DataPath>ДокументыКПереносу.ДатаДействия</DataPath>
+							<ReadOnly>true</ReadOnly>
+							<EditMode>Enter</EditMode>
+							<ContextMenu name="ДокументыКПереносуДатаДействияКонтекстноеМеню" id="152"/>
+							<ExtendedTooltip name="ДокументыКПереносуДатаДействияРасширеннаяПодсказка" id="153"/>
+						</InputField>
+						<InputField name="ДокументыКПереносуДатаОкончания" id="47">
+							<DataPath>ДокументыКПереносу.ДатаОкончания</DataPath>
+							<ReadOnly>true</ReadOnly>
+							<EditMode>Enter</EditMode>
+							<ContextMenu name="ДокументыКПереносуДатаОкончанияКонтекстноеМеню" id="154"/>
+							<ExtendedTooltip name="ДокументыКПереносуДатаОкончанияРасширеннаяПодсказка" id="155"/>
+						</InputField>
+						<InputField name="ДокументыКПереносуСпособРасчетаПредставление" id="48">
+							<DataPath>ДокументыКПереносу.СпособРасчетаПредставление</DataPath>
+							<ReadOnly>true</ReadOnly>
+							<EditMode>Enter</EditMode>
+							<ContextMenu name="ДокументыКПереносуСпособРасчетаПредставлениеКонтекстноеМеню" id="156"/>
+							<ExtendedTooltip name="ДокументыКПереносуСпособРасчетаПредставлениеРасширеннаяПодсказка" id="157"/>
+						</InputField>
+						<InputField name="ДокументыКПереносуРазмерПредставление" id="49">
+							<DataPath>ДокументыКПереносу.РазмерПредставление</DataPath>
+							<ReadOnly>true</ReadOnly>
+							<EditMode>Enter</EditMode>
+							<ContextMenu name="ДокументыКПереносуРазмерПредставлениеКонтекстноеМеню" id="158"/>
+							<ExtendedTooltip name="ДокументыКПереносуРазмерПредставлениеРасширеннаяПодсказка" id="159"/>
+						</InputField>
+						<InputField name="ДокументыКПереносуСостояние" id="50">
+							<DataPath>ДокументыКПереносу.Состояние</DataPath>
+							<ReadOnly>true</ReadOnly>
+							<EditMode>Enter</EditMode>
+							<ContextMenu name="ДокументыКПереносуСостояниеКонтекстноеМеню" id="160"/>
+							<ExtendedTooltip name="ДокументыКПереносуСостояниеРасширеннаяПодсказка" id="161"/>
+						</InputField>
+						<InputField name="ДокументыКПереносуОписаниеОшибки" id="51">
+							<DataPath>ДокументыКПереносу.ОписаниеОшибки</DataPath>
+							<ReadOnly>true</ReadOnly>
+							<EditMode>Enter</EditMode>
+							<ContextMenu name="ДокументыКПереносуОписаниеОшибкиКонтекстноеМеню" id="162"/>
+							<ExtendedTooltip name="ДокументыКПереносуОписаниеОшибкиРасширеннаяПодсказка" id="163"/>
+						</InputField>
+						<InputField name="ДокументыКПереносуДокумент" id="52">
+							<DataPath>ДокументыКПереносу.Документ</DataPath>
+							<ReadOnly>true</ReadOnly>
+							<EditMode>Enter</EditMode>
+							<OpenButton>true</OpenButton>
+							<ContextMenu name="ДокументыКПереносуДокументКонтекстноеМеню" id="164"/>
+							<ExtendedTooltip name="ДокументыКПереносуДокументРасширеннаяПодсказка" id="165"/>
+						</InputField>
+					</ChildItems>
+				</Table>
+			</ChildItems>
+		</UsualGroup>
+		<InputField name="Журнал" id="60">
+			<DataPath>Журнал</DataPath>
+			<TitleLocation>Top</TitleLocation>
+			<MultiLine>true</MultiLine>
+			<ReadOnly>true</ReadOnly>
+			<Height>5</Height>
+			<ContextMenu name="ЖурналКонтекстноеМеню" id="166"/>
+			<ExtendedTooltip name="ЖурналРасширеннаяПодсказка" id="167"/>
+		</InputField>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="Объект" id="1">
+			<Type>
+				<v8:Type>cfg:ExternalDataProcessorObject.ПереносИсполнительныхЛистовЗУПвERP</v8:Type>
+			</Type>
+			<MainAttribute>true</MainAttribute>
+		</Attribute>
+		<Attribute name="ДатаПереноса" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Дата переноса</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:dateTime</v8:Type>
+				<v8:DateQualifiers>
+					<v8:DateFractions>Date</v8:DateFractions>
+				</v8:DateQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="Организация" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Организация</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.Организации</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ИмяФайла" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Файл обмена</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="ПроводитьДокументы" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Проводить документы</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ПерезаписыватьСуществующие" id="6">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Перезаписывать существующие</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ПереноситьОстатокПредела" id="7">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Переносить остаток предела</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="СоздаватьКонтрагентов" id="8">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Создавать получателей</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="РежимРаботы" id="9">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Режим работы</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>50</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="ВариантИнформационнойБазы" id="10">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Вариант ИБ ЗУП</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>20</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="КаталогИБ" id="11">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Каталог ИБ ЗУП</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="СерверИБ" id="12">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сервер 1С</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>150</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="ИмяИБ" id="13">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Имя базы ЗУП</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>150</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="ПользовательИБ" id="14">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Пользователь ЗУП</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>100</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="ПарольИБ" id="15">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Пароль</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>100</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="ДокументыКПереносу" id="16">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Документы к переносу</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:ValueTable</v8:Type>
+			</Type>
+			<Columns>
+				<Column name="Пометка" id="1">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content> </v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:boolean</v8:Type>
+					</Type>
+				</Column>
+				<Column name="УИД" id="2">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>УИД</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>36</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="Номер" id="3">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Номер</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>30</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="Дата" id="4">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Дата</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:dateTime</v8:Type>
+						<v8:DateQualifiers>
+							<v8:DateFractions>Date</v8:DateFractions>
+						</v8:DateQualifiers>
+					</Type>
+				</Column>
+				<Column name="ОрганизацияПредставление" id="5">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Организация</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>150</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="СотрудникПредставление" id="6">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Сотрудник</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>150</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="ПолучательПредставление" id="7">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Получатель</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>150</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="ДатаДействия" id="8">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Удерживать с</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:dateTime</v8:Type>
+						<v8:DateQualifiers>
+							<v8:DateFractions>Date</v8:DateFractions>
+						</v8:DateQualifiers>
+					</Type>
+				</Column>
+				<Column name="ДатаОкончания" id="9">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>По</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:dateTime</v8:Type>
+						<v8:DateQualifiers>
+							<v8:DateFractions>Date</v8:DateFractions>
+						</v8:DateQualifiers>
+					</Type>
+				</Column>
+				<Column name="СпособРасчетаПредставление" id="10">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Способ расчёта</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>100</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="РазмерПредставление" id="11">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Размер</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>50</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="Состояние" id="12">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Состояние</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>50</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="ОписаниеОшибки" id="13">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Ошибка</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="Документ" id="14">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Документ</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>cfg:DocumentRef.ИсполнительныйЛист</v8:Type>
+					</Type>
+				</Column>
+			</Columns>
+		</Attribute>
+		<Attribute name="Журнал" id="17">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Журнал</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="АдресДанныхДокументов" id="18">
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="Заполнить" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Заполнить</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Отобрать действующие исполнительные листы по регистру Плановые удержания</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.Refresh</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>Заполнить</Action>
+			<Representation>TextPicture</Representation>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+		<Command name="ВыгрузитьВФайл" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Выгрузить в файл</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Выгрузить отмеченные документы в XML для загрузки в ERP</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ВыгрузитьВФайл</Action>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+		<Command name="ЗагрузитьВERP" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Загрузить в ERP</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Создать документы Исполнительный лист в текущей базе</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ЗагрузитьВERP</Action>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+		<Command name="ПеренестиЧерезCOM" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Перенести через COM</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Прочитать документы из ЗУП и создать их в текущей базе</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ПеренестиЧерезCOM</Action>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+		<Command name="УстановитьПометки" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Установить пометки</v8:content>
+				</v8:item>
+			</Title>
+			<Action>УстановитьПометки</Action>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+		<Command name="СнятьПометки" id="6">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Снять пометки</v8:content>
+				</v8:item>
+			</Title>
+			<Action>СнятьПометки</Action>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+	</Commands>
+</Form>
