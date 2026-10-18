@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TransferData Format="Transfer_IspolnitelnyList_ZUP_ERP" Version="1.0" ExportDate="2026-10-18T10:00:00" TransferDate="2026-10-01T00:00:00" SourceConfig="1C:ZUP 3.1" TargetConfig="1C:ERP 2" Count="2">
+	<Documents>
+		<IspolnitelnyList UUID="7a8b9c0d-1e2f-4a5b-8c9d-0e1f2a3b4c5d">
+			<Number>ЗУП-000042</Number>
+			<Date>2025-03-15T09:30:00</Date>
+			<Organization>
+				<INN>7701234567</INN>
+				<KPP>770101001</KPP>
+				<Name>ООО &quot;Производственная Компания&quot;</Name>
+				<OGRN>1027700132145</OGRN>
+			</Organization>
+			<Individual>
+				<INN>772345678901</INN>
+				<SNILS>123-456-789 01</SNILS>
+				<BirthDate>1985-06-20T00:00:00</BirthDate>
+				<FullName>Иванов Иван Иванович</FullName>
+				<Gender>Мужской</Gender>
+			</Individual>
+			<Employee>
+				<PersonnelNumber>00000012</PersonnelNumber>
+				<Name>Иванов Иван Иванович</Name>
+			</Employee>
+			<Recipient>
+				<INN>773456789012</INN>
+				<KPP/>
+				<Name>Иванова Анна Сергеевна</Name>
+			</Recipient>
+			<BankAccount>
+				<AccountNumber>40817810000001234567</AccountNumber>
+				<BIC>044525225</BIC>
+				<BankName>ПАО СБЕРБАНК</BankName>
+				<CorrAccount>30101810400000000225</CorrAccount>
+			</BankAccount>
+			<DocumentType>ИсполнительныйЛист</DocumentType>
+			<DocumentNumber>ВС № 012345678</DocumentNumber>
+			<IssueDate>2025-02-10T00:00:00</IssueDate>
+			<IssuedBy>Судебный участок № 125 Тверского района г. Москвы</IssuedBy>
+			<CalculationMethod>Процентом</CalculationMethod>
+			<Deduction>
+				<Code>00001</Code>
+				<Name>Удержание по исполнительному документу</Name>
+			</Deduction>
+			<Amount>0.00</Amount>
+			<Percent>25.00</Percent>
+			<Numerator>0</Numerator>
+			<Denominator>0</Denominator>
+			<StartDate>2025-03-01T00:00:00</StartDate>
+			<EndDate>2043-06-20T00:00:00</EndDate>
+			<StopAtLimit>false</StopAtLimit>
+			<Limit>0.00</Limit>
+			<IncludeSickLeave>true</IncludeSickLeave>
+			<PaymentAgent>
+				<INN>7710140679</INN>
+				<KPP>771001001</KPP>
+				<Name>АО &quot;Почта России&quot;</Name>
+			</PaymentAgent>
+			<AgentTariff>
+				<Name>Почтовый перевод</Name>
+			</AgentTariff>
+			<RetainAgentFee>true</RetainAgentFee>
+			<RecoveryPriority>ПерваяОчередь</RecoveryPriority>
+			<Comment>Алименты на содержание несовершеннолетнего ребенка (Иванов М.И. 20.06.2025 г.р.)</Comment>
+			<PlannedDeductionsRegisterInfo>
+				<RegisterAmount>25.00</RegisterAmount>
+				<IsActiveInRegister>true</IsActiveInRegister>
+				<ActiveUntilInRegister>2043-06-20T00:00:00</ActiveUntilInRegister>
+			</PlannedDeductionsRegisterInfo>
+		</IspolnitelnyList>
+		<IspolnitelnyList UUID="8b9c0d1e-2f3a-4b5c-9d0e-1f2a3b4c5d6e">
+			<Number>ЗУП-000089</Number>
+			<Date>2025-08-01T14:15:00</Date>
+			<Organization>
+				<INN>7701234567</INN>
+				<KPP>770101001</KPP>
+				<Name>ООО &quot;Производственная Компания&quot;</Name>
+				<OGRN>1027700132145</OGRN>
+			</Organization>
+			<Individual>
+				<INN>774567890123</INN>
+				<SNILS>987-654-321 09</SNILS>
+				<BirthDate>1990-11-12T00:00:00</BirthDate>
+				<FullName>Петров Петр Петрович</FullName>
+				<Gender>Мужской</Gender>
+			</Individual>
+			<Employee>
+				<PersonnelNumber>00000045</PersonnelNumber>
+				<Name>Петров Петр Петрович</Name>
+			</Employee>
+			<Recipient>
+				<INN>7707083893</INN>
+				<KPP>773601001</KPP>
+				<Name>УФССП России по г. Москве</Name>
+			</Recipient>
+			<BankAccount>
+				<AccountNumber>40302810900000000012</AccountNumber>
+				<BIC>044525000</BIC>
+				<BankName>ГУ БАНКА РОССИИ ПО ЦФО//УФК ПО Г. МОСКВЕ</BankName>
+				<CorrAccount>00000000000000000000</CorrAccount>
+			</BankAccount>
+			<DocumentType>ПостановлениеСудебногоПристава</DocumentType>
+			<DocumentNumber>ИП-45678/25/77023</DocumentNumber>
+			<IssueDate>2025-07-25T00:00:00</IssueDate>
+			<IssuedBy>ОСП по Центральному АО № 2 УФССП по Москве</IssuedBy>
+			<CalculationMethod>ФиксированнойСуммой</CalculationMethod>
+			<Deduction>
+				<Code>00002</Code>
+				<Name>Удержание по исполнительному документу (фиксированной суммой)</Name>
+			</Deduction>
+			<Amount>15000.00</Amount>
+			<Percent>0.00</Percent>
+			<Numerator>0</Numerator>
+			<Denominator>0</Denominator>
+			<StartDate>2025-08-01T00:00:00</StartDate>
+			<EndDate>0001-01-01T00:00:00</EndDate>
+			<StopAtLimit>true</StopAtLimit>
+			<Limit>180000.00</Limit>
+			<IncludeSickLeave>false</IncludeSickLeave>
+			<PaymentAgent>
+				<INN/>
+				<KPP/>
+				<Name/>
+			</PaymentAgent>
+			<AgentTariff>
+				<Name/>
+			</AgentTariff>
+			<RetainAgentFee>false</RetainAgentFee>
+			<RecoveryPriority>ВтораяОчередь</RecoveryPriority>
+			<Comment>Взыскание задолженности по кредитным обязательствам (лимит 180 000 руб.)</Comment>
+			<PlannedDeductionsRegisterInfo>
+				<RegisterAmount>15000.00</RegisterAmount>
+				<IsActiveInRegister>true</IsActiveInRegister>
+				<ActiveUntilInRegister>0001-01-01T00:00:00</ActiveUntilInRegister>
+			</PlannedDeductionsRegisterInfo>
+		</IspolnitelnyList>
+	</Documents>
+</TransferData>
