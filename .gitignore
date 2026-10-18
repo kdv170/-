@@ -1,2 +1,4 @@
 /build/
 *.epf
+__pycache__/
+*.pyc
