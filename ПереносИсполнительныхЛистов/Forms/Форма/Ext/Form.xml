@@ -1,0 +1,370 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcssch="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.11">
+	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1"/>
+	<Events>
+		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
+	</Events>
+	<ChildItems>
+		<InputField name="ДатаПереноса" id="1">
+			<DataPath>ДатаПереноса</DataPath>
+			<Title>
+				<v8:item><v8:lang>ru</v8:lang><v8:content>Дата переноса (удержания действуют на дату)</v8:content></v8:item>
+			</Title>
+			<ContextMenu name="ДатаПереносаКонтекстноеМеню" id="2"/>
+			<ExtendedTooltip name="ДатаПереносаРасширеннаяПодсказка" id="3"/>
+		</InputField>
+		<Pages name="Страницы" id="38">
+			<PagesRepresentation>TabsOnTop</PagesRepresentation>
+			<ExtendedTooltip name="СтраницыРасширеннаяПодсказка" id="39"/>
+			<ChildItems>
+				<Page name="СтраницаВыгрузка" id="10">
+					<Title>
+						<v8:item><v8:lang>ru</v8:lang><v8:content>Выгрузка из ЗУП</v8:content></v8:item>
+					</Title>
+					<ExtendedTooltip name="СтраницаВыгрузкаРасширеннаяПодсказка" id="11"/>
+					<ChildItems>
+						<UsualGroup name="ГруппаКнопокВыгрузки" id="8">
+							<Group>Horizontal</Group>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="ГруппаКнопокВыгрузкиРасширеннаяПодсказка" id="9"/>
+							<ChildItems>
+								<Button name="ЗаполнитьСписок" id="4">
+									<Type>UsualButton</Type>
+									<DefaultButton>true</DefaultButton>
+									<CommandName>Form.Command.ЗаполнитьСписок</CommandName>
+									<ExtendedTooltip name="ЗаполнитьСписокРасширеннаяПодсказка" id="5"/>
+								</Button>
+								<Button name="ВыгрузитьВФайл" id="6">
+									<Type>UsualButton</Type>
+									<CommandName>Form.Command.ВыгрузитьВФайл</CommandName>
+									<ExtendedTooltip name="ВыгрузитьВФайлРасширеннаяПодсказка" id="7"/>
+								</Button>
+							</ChildItems>
+						</UsualGroup>
+					</ChildItems>
+				</Page>
+				<Page name="СтраницаЗагрузка" id="36">
+					<Title>
+						<v8:item><v8:lang>ru</v8:lang><v8:content>Загрузка в ERP</v8:content></v8:item>
+					</Title>
+					<ExtendedTooltip name="СтраницаЗагрузкаРасширеннаяПодсказка" id="37"/>
+					<ChildItems>
+						<UsualGroup name="ГруппаКнопокЗагрузки" id="16">
+							<Group>Horizontal</Group>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="ГруппаКнопокЗагрузкиРасширеннаяПодсказка" id="17"/>
+							<ChildItems>
+								<Button name="ОткрытьФайл" id="12">
+									<Type>UsualButton</Type>
+									<DefaultButton>true</DefaultButton>
+									<CommandName>Form.Command.ОткрытьФайл</CommandName>
+									<ExtendedTooltip name="ОткрытьФайлРасширеннаяПодсказка" id="13"/>
+								</Button>
+								<Button name="ЗагрузитьДокументы" id="14">
+									<Type>UsualButton</Type>
+									<CommandName>Form.Command.ЗагрузитьДокументы</CommandName>
+									<ExtendedTooltip name="ЗагрузитьДокументыРасширеннаяПодсказка" id="15"/>
+								</Button>
+							</ChildItems>
+						</UsualGroup>
+						<InputField name="ИмяФайлаЗагрузки" id="18">
+							<DataPath>ИмяФайлаЗагрузки</DataPath>
+							<ReadOnly>true</ReadOnly>
+							<Title>
+								<v8:item><v8:lang>ru</v8:lang><v8:content>Файл</v8:content></v8:item>
+							</Title>
+							<ContextMenu name="ИмяФайлаЗагрузкиКонтекстноеМеню" id="19"/>
+							<ExtendedTooltip name="ИмяФайлаЗагрузкиРасширеннаяПодсказка" id="20"/>
+						</InputField>
+						<CheckBoxField name="ПроводитьДокументы" id="21">
+							<DataPath>ПроводитьДокументы</DataPath>
+							<Title>
+								<v8:item><v8:lang>ru</v8:lang><v8:content>Проводить документы, проведенные в ЗУП</v8:content></v8:item>
+							</Title>
+							<TitleLocation>Right</TitleLocation>
+							<CheckBoxType>Auto</CheckBoxType>
+							<ContextMenu name="ПроводитьДокументыКонтекстноеМеню" id="22"/>
+							<ExtendedTooltip name="ПроводитьДокументыРасширеннаяПодсказка" id="23"/>
+						</CheckBoxField>
+						<CheckBoxField name="ОбновлятьСуществующие" id="24">
+							<DataPath>ОбновлятьСуществующие</DataPath>
+							<Title>
+								<v8:item><v8:lang>ru</v8:lang><v8:content>Обновлять документы, уже имеющиеся в ERP (номер, дата, организация)</v8:content></v8:item>
+							</Title>
+							<TitleLocation>Right</TitleLocation>
+							<CheckBoxType>Auto</CheckBoxType>
+							<ContextMenu name="ОбновлятьСуществующиеКонтекстноеМеню" id="25"/>
+							<ExtendedTooltip name="ОбновлятьСуществующиеРасширеннаяПодсказка" id="26"/>
+						</CheckBoxField>
+						<CheckBoxField name="ПропускатьСНеразрешеннымиСсылками" id="27">
+							<DataPath>ПропускатьСНеразрешеннымиСсылками</DataPath>
+							<Title>
+								<v8:item><v8:lang>ru</v8:lang><v8:content>Не загружать документы, для которых не найдены соответствия ссылок</v8:content></v8:item>
+							</Title>
+							<TitleLocation>Right</TitleLocation>
+							<CheckBoxType>Auto</CheckBoxType>
+							<ContextMenu name="ПропускатьСНеразрешеннымиСсылкамиКонтекстноеМеню" id="28"/>
+							<ExtendedTooltip name="ПропускатьСНеразрешеннымиСсылкамиРасширеннаяПодсказка" id="29"/>
+						</CheckBoxField>
+						<CheckBoxField name="БратьПервыйПриНеоднозначности" id="30">
+							<DataPath>БратьПервыйПриНеоднозначности</DataPath>
+							<Title>
+								<v8:item><v8:lang>ru</v8:lang><v8:content>При нескольких подходящих элементах брать первый</v8:content></v8:item>
+							</Title>
+							<TitleLocation>Right</TitleLocation>
+							<CheckBoxType>Auto</CheckBoxType>
+							<ContextMenu name="БратьПервыйПриНеоднозначностиКонтекстноеМеню" id="31"/>
+							<ExtendedTooltip name="БратьПервыйПриНеоднозначностиРасширеннаяПодсказка" id="32"/>
+						</CheckBoxField>
+						<CheckBoxField name="ТолькоПроверка" id="33">
+							<DataPath>ТолькоПроверка</DataPath>
+							<Title>
+								<v8:item><v8:lang>ru</v8:lang><v8:content>Только проверка (без записи документов)</v8:content></v8:item>
+							</Title>
+							<TitleLocation>Right</TitleLocation>
+							<CheckBoxType>Auto</CheckBoxType>
+							<ContextMenu name="ТолькоПроверкаКонтекстноеМеню" id="34"/>
+							<ExtendedTooltip name="ТолькоПроверкаРасширеннаяПодсказка" id="35"/>
+						</CheckBoxField>
+					</ChildItems>
+				</Page>
+			</ChildItems>
+		</Pages>
+		<UsualGroup name="ГруппаОтметок" id="44">
+			<Group>Horizontal</Group>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="ГруппаОтметокРасширеннаяПодсказка" id="45"/>
+			<ChildItems>
+				<Button name="ОтметитьВсе" id="40">
+					<Type>UsualButton</Type>
+					<CommandName>Form.Command.ОтметитьВсе</CommandName>
+					<ExtendedTooltip name="ОтметитьВсеРасширеннаяПодсказка" id="41"/>
+				</Button>
+				<Button name="СнятьОтметки" id="42">
+					<Type>UsualButton</Type>
+					<CommandName>Form.Command.СнятьОтметки</CommandName>
+					<ExtendedTooltip name="СнятьОтметкиРасширеннаяПодсказка" id="43"/>
+				</Button>
+			</ChildItems>
+		</UsualGroup>
+		<Table name="ТаблицаДокументов" id="46">
+			<Representation>List</Representation>
+			<CommandBarLocation>None</CommandBarLocation>
+			<AutoInsertNewRow>false</AutoInsertNewRow>
+			<DataPath>ТаблицаДокументов</DataPath>
+			<ContextMenu name="ТаблицаДокументовКонтекстноеМеню" id="47"/>
+			<AutoCommandBar name="ТаблицаДокументовКоманднаяПанель" id="48"/>
+			<ExtendedTooltip name="ТаблицаДокументовРасширеннаяПодсказка" id="49"/>
+			<ChildItems>
+				<CheckBoxField name="ТаблицаДокументовПометка" id="50">
+					<DataPath>ТаблицаДокументов.Пометка</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<CheckBoxType>Auto</CheckBoxType>
+					<ContextMenu name="ТаблицаДокументовПометкаКонтекстноеМеню" id="51"/>
+					<ExtendedTooltip name="ТаблицаДокументовПометкаРасширеннаяПодсказка" id="52"/>
+				</CheckBoxField>
+				<InputField name="ТаблицаДокументовНомер" id="53">
+					<DataPath>ТаблицаДокументов.Номер</DataPath>
+					<ReadOnly>true</ReadOnly>
+					<ContextMenu name="ТаблицаДокументовНомерКонтекстноеМеню" id="54"/>
+					<ExtendedTooltip name="ТаблицаДокументовНомерРасширеннаяПодсказка" id="55"/>
+				</InputField>
+				<InputField name="ТаблицаДокументовДата" id="56">
+					<DataPath>ТаблицаДокументов.Дата</DataPath>
+					<ReadOnly>true</ReadOnly>
+					<ContextMenu name="ТаблицаДокументовДатаКонтекстноеМеню" id="57"/>
+					<ExtendedTooltip name="ТаблицаДокументовДатаРасширеннаяПодсказка" id="58"/>
+				</InputField>
+				<InputField name="ТаблицаДокументовПредставление" id="59">
+					<DataPath>ТаблицаДокументов.Представление</DataPath>
+					<ReadOnly>true</ReadOnly>
+					<ContextMenu name="ТаблицаДокументовПредставлениеКонтекстноеМеню" id="60"/>
+					<ExtendedTooltip name="ТаблицаДокументовПредставлениеРасширеннаяПодсказка" id="61"/>
+				</InputField>
+				<InputField name="ТаблицаДокументовРезультат" id="62">
+					<DataPath>ТаблицаДокументов.Результат</DataPath>
+					<ReadOnly>true</ReadOnly>
+					<ContextMenu name="ТаблицаДокументовРезультатКонтекстноеМеню" id="63"/>
+					<ExtendedTooltip name="ТаблицаДокументовРезультатРасширеннаяПодсказка" id="64"/>
+				</InputField>
+			</ChildItems>
+		</Table>
+		<InputField name="ТекстПротокола" id="65">
+			<DataPath>ТекстПротокола</DataPath>
+			<ReadOnly>true</ReadOnly>
+			<Title>
+				<v8:item><v8:lang>ru</v8:lang><v8:content>Протокол</v8:content></v8:item>
+			</Title>
+			<TitleLocation>Top</TitleLocation>
+			<Height>8</Height>
+			<MultiLine>true</MultiLine>
+			<ContextMenu name="ТекстПротоколаКонтекстноеМеню" id="66"/>
+			<ExtendedTooltip name="ТекстПротоколаРасширеннаяПодсказка" id="67"/>
+		</InputField>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="Объект" id="1">
+			<Type>
+				<v8:Type>cfg:ExternalDataProcessorObject.ПереносИсполнительныхЛистов</v8:Type>
+			</Type>
+			<MainAttribute>true</MainAttribute>
+		</Attribute>
+		<Attribute name="ДатаПереноса" id="2">
+			<Type>
+				<v8:Type>xs:dateTime</v8:Type>
+				<v8:DateQualifiers>
+					<v8:DateFractions>Date</v8:DateFractions>
+				</v8:DateQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="ПроводитьДокументы" id="3">
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ОбновлятьСуществующие" id="4">
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ПропускатьСНеразрешеннымиСсылками" id="5">
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="БратьПервыйПриНеоднозначности" id="6">
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ТолькоПроверка" id="7">
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="АдресФайла" id="8">
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="ИмяФайлаЗагрузки" id="9">
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="ТекстПротокола" id="10">
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="ТаблицаДокументов" id="11">
+			<Type>
+				<v8:Type>v8:ValueTable</v8:Type>
+			</Type>
+			<Columns>
+				<Column name="Пометка" id="1">
+					<Type>
+						<v8:Type>xs:boolean</v8:Type>
+					</Type>
+				</Column>
+				<Column name="ИД" id="2">
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="Номер" id="3">
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="Дата" id="4">
+					<Type>
+						<v8:Type>xs:dateTime</v8:Type>
+						<v8:DateQualifiers>
+							<v8:DateFractions>DateTime</v8:DateFractions>
+						</v8:DateQualifiers>
+					</Type>
+				</Column>
+				<Column name="Представление" id="5">
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="Результат" id="6">
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+			</Columns>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="ЗаполнитьСписок" id="1">
+			<Title>
+				<v8:item><v8:lang>ru</v8:lang><v8:content>Подобрать документы</v8:content></v8:item>
+			</Title>
+			<Action>ЗаполнитьСписок</Action>
+		</Command>
+		<Command name="ВыгрузитьВФайл" id="2">
+			<Title>
+				<v8:item><v8:lang>ru</v8:lang><v8:content>Выгрузить в файл</v8:content></v8:item>
+			</Title>
+			<Action>ВыгрузитьВФайл</Action>
+		</Command>
+		<Command name="ОткрытьФайл" id="3">
+			<Title>
+				<v8:item><v8:lang>ru</v8:lang><v8:content>Открыть файл</v8:content></v8:item>
+			</Title>
+			<Action>ОткрытьФайл</Action>
+		</Command>
+		<Command name="ЗагрузитьДокументы" id="4">
+			<Title>
+				<v8:item><v8:lang>ru</v8:lang><v8:content>Загрузить в ERP</v8:content></v8:item>
+			</Title>
+			<Action>ЗагрузитьДокументы</Action>
+		</Command>
+		<Command name="ОтметитьВсе" id="5">
+			<Title>
+				<v8:item><v8:lang>ru</v8:lang><v8:content>Отметить все</v8:content></v8:item>
+			</Title>
+			<Action>ОтметитьВсе</Action>
+		</Command>
+		<Command name="СнятьОтметки" id="6">
+			<Title>
+				<v8:item><v8:lang>ru</v8:lang><v8:content>Снять отметки</v8:content></v8:item>
+			</Title>
+			<Action>СнятьОтметки</Action>
+		</Command>
+	</Commands>
+</Form>
