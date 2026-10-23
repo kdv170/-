@@ -1,0 +1,4 @@
+*.bsl text eol=crlf
+*.xml text eol=crlf
+*.md  text eol=lf
+*.cmd text eol=crlf
