@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Паспорт внешней обработки "Загрузка данных для НДФЛ из ЗУП через COM".
+     Файл-описатель для хранения исходников вне ИБ (EDT / v8unpack-стиль).
+     При сборке .epf в Конфигураторе эти свойства задаются в палитре свойств
+     обработки и функцией СведенияОВнешнейОбработке() в модуле объекта. -->
+<ExternalDataProcessor xmlns="http://v8.1c.ru/8.3/data/enterprise/current-config">
+  <Properties>
+    <Name>ЗагрузкаДанныхНДФЛИзЗУП</Name>
+    <Synonym>Загрузка данных для НДФЛ из ЗУП через COM</Synonym>
+    <Comment>Загрузка записей регистра учета НДФЛ (по умолчанию УчетДоходовДляИсчисленияНДФЛ) из 1С:ЗУП 3.1 в 1С:ERP 2.4/2.5 через COM-соединение с созданием документа ОперацияУчетаНДФЛ. Безопасный режим должен быть отключен.</Comment>
+    <Version>1.0.0</Version>
+    <!-- ВАЖНО: для COM-соединения безопасный режим всегда ЛОЖЬ -->
+    <SafeMode>false</SafeMode>
+    <UseManagedForm>true</UseManagedForm>
+    <MainForm>ФормаЗагрузки</MainForm>
+  </Properties>
+  <ObjectModule>ObjectModule.bsl</ObjectModule>
+  <Forms>
+    <Form name="ФормаЗагрузки" managed="true">
+      <FormModule>ManagedFormModule.bsl</FormModule>
+      <!-- Реквизиты, таблицы и команды формы см. в FormDescription.md.
+           Имена обязаны совпадать с обращениями в ManagedFormModule.bsl -->
+      <Description>FormDescription.md</Description>
+    </Form>
+  </Forms>
+  <RequiredPermissions>
+    <!-- COM доступен только вне безопасного режима; обработка меняет данные:
+         создает документ ОперацияУчетаНДФЛ и (опционально) элементы справочника ФизическиеЛица -->
+    <Permission>СозданиеДокумента_ОперацияУчетаНДФЛ</Permission>
+    <Permission>ЧтениеСправочника_ФизическиеЛица</Permission>
+    <Permission>СозданиеЭлемента_ФизическиеЛица_Опционально</Permission>
+    <Permission>ВнешнееСоединение_COMConnector</Permission>
+  </RequiredPermissions>
+  <Compatibility>
+    <SourceConfig>Зарплата и управление персоналом, редакция 3.1 (база-корреспондент, чтение через COM)</SourceConfig>
+    <TargetConfig>ERP Управление предприятием, редакции 2.4 / 2.5 (создание документа ОперацияУчетаНДФЛ)</TargetConfig>
+    <Platform>8.3.10+</Platform>
+    <Client>Тонкий клиент / Толстый клиент (Windows). Веб-клиент не поддерживается (нет COM).</Client>
+  </Compatibility>
+</ExternalDataProcessor>
